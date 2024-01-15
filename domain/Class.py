@@ -1,29 +1,24 @@
-class Restourant:
-    def __init__(self,id:int, name:str, tema:str,rating:int):
-        self.__id = id
+class Cucuri:
+    def __init__(self, name:str, latime:float,inaltime:float,lungime:float,fert:bool ):
         self.__name = name
-        self.__tema = tema
-        self.__rating = rating
+        self.__latime = latime
+        self.__inaltime = inaltime
+        self.__lungime = lungime
+        self.__fert = fert
 
-    def getId(self):
-        return self.__id
     def getName(self):
         return self.__name
-    def getTema(self):
-        return self.__tema
-    def getRating(self):
-        return self.__rating
-        
-    def setId(self,id):
-        self.__id = id
-    def setName(self,name):
-        self.__name = name
-    def setTema(self,tema):
-        self.__tema = tema
-    def setRating(self,raiting):
-        self.__rating = raiting
-
+    def getlatime(self):
+        return self.__latime
+    def getInaltime(self):
+        return self.__inaltime
+    def getLungime(self):
+        return self.__lungime
+    def getFert(self):
+        return self.__fert
+    
     def __str__(self) -> str:
-        return "Id: " + str(self.__id) + " Name:  "+self.__name + " Tema: "+ self.__tema + " Rating: "+ str(self.__rating)
+        return "Detinator: "+self.__name+" Latime: "+str(self.__latime)+" Inaltime: "+str(self.__inaltime)+" Lungime: "+str(self.__lungime)+" Fertilitate: "+str(self.__fert)
     def __repr__(self) -> str:
         return str(self)
+        

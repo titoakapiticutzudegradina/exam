@@ -1,49 +1,42 @@
-from domain.Class import Restourant
+from domain.Class import Cucuri
 
 class Repo:
     def __init__(self):
-        self.__data=[]
+        self.__data = []
 
-    def __str__(self):
-        s= ''
+    def __str__(self) -> str:
+        s=''
         for elem in self.__data:
-            s+= str(elem)+ "\n"
+            s+=str(elem)+"\n"
         return s
-    def addF(self,id,name,tema,rating):
+    
+    def addC(self,name,latime,inaltime,lungime,fertilitate):
         """
-        Purpose: Add a restaurant to the list
+        Purpose: add detinator
         """
-        if id == None or name == None or tema == None or rating == None:
-            raise ValueError ("Invalid")
-        if tema not in ["italian","unguresc","taranesc","american","sobolanesc"]:
-            raise ValueError ("Invalid")
-        if rating<0 and rating>5:
-            raise ValueError ("Invalid")
+        if name== None:
+            raise ValueError("Invalid")
+        if latime<0 or inaltime<0 or lungime<0:
+            raise ValueError("Invalid")
+        if type(fertilitate)!=bool:
+            raise ValueError("Invalid")
         for elem in self.__data:
-            if elem.getId() == id:
-                raise ValueError ("Already here")
-        self.__data.append(Restourant(id,name,tema,rating))
+            if elem.getName() == name:
+                raise ValueError("Are cuc deja!!!")
+        self.__data.append(Cucuri(name,latime,inaltime,lungime,fertilitate))
 
-    def removeF(self,raiting):
+    def removeC(self):
         """
-        Purpose: Removes restaurants if rating under a given value
+        Purpose: sterge nefertilii
         """
         for i in range(len(self.__data)-1,-1,-1):
-            if self.__data[i].getRating() < raiting:
+            if self.__data[i].getFert() == False:
                 self.__data.remove(self.__data[i])
+            
+    def sortC(self):
+        """
+        Purpose: Sort dupa volum cuc
+        """
+        return self.__data.sort(key= lambda x:(x.getInaltime()*x.getlatime()*x.getLungime()))
 
-    def getF(self, tema):
-        """
-        Purpose: Gets all restaurants w given tema, alphabetical
-        """
-        result = []
-        if tema not in ["italian","unguresc","taranesc","american","sobolanesc"]:
-            raise ValueError ("Invalid")
-        for elem in self.__data:
-            if elem.getTema() == tema:
-                result.append(elem)
-        result.sort(key=lambda x:x.getName(),reverse=False)
-        return result
-        
-        
         
